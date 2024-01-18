@@ -1,14 +1,17 @@
 const repositoriesContainer = document.getElementById('repositoriesContainer');
 const paginationContainer = document.getElementById('pagination');
 const usernameInput = document.getElementById('usernameInput');
-const repositoriesPerPage = 10; 
+const repositoriesPerPage = 10; // Number of repositories to display per page
 
 let currentPage = 1;
+
+// Display a placeholder message on page load
+repositoriesContainer.innerHTML = '<p>Enter a GitHub username and click "Fetch Repositories" to get started.</p>';
 
 function fetchRepositories(pageNumber) {
     const username = usernameInput.value.trim();
 
-    if (!username && pageNumber !== 1) {
+    if (!username) {
         alert('Please enter a valid GitHub username');
         return;
     }
@@ -35,8 +38,12 @@ function fetchRepositories(pageNumber) {
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
-                    displayRepositories(data);
-                    displayPagination(pageCount, currentPage);
+                    if (Array.isArray(data)) {
+                        displayRepositories(data);
+                        displayPagination(pageCount, currentPage);
+                    } else {
+                        repositoriesContainer.innerHTML = '<p>No repositories found.</p>';
+                    }
                 })
                 .catch(error => {
                     repositoriesContainer.innerHTML = `<p>Error fetching data: ${error.message}</p>`;
@@ -98,5 +105,5 @@ function createPaginationButton(text, onClick) {
     return button;
 }
 
-// Initial page load (page 1)
-fetchRepositories(1);
+// Initial page load (page 1) - Removed the automatic fetch
+// fetchRepositories(1);
