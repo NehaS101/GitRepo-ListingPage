@@ -8,8 +8,9 @@ let currentPage = 1;
 function fetchRepositories(pageNumber) {
     const username = usernameInput.value.trim();
 
-    if (!username) {
+    if (!username && pageNumber !== 1) {
         alert('Please enter a valid GitHub username');
+        return;
     }
 
     // Clear previous data
