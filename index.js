@@ -1,7 +1,7 @@
 const repositoriesContainer = document.getElementById('repositoriesContainer');
 const paginationContainer = document.getElementById('pagination');
 const usernameInput = document.getElementById('usernameInput');
-const repositoriesPerPage = 10; // Number of repositories to display per page
+const repositoriesPerPage = 10; 
 
 let currentPage = 1;
 
@@ -10,7 +10,6 @@ function fetchRepositories(pageNumber) {
 
     if (!username) {
         alert('Please enter a valid GitHub username');
-        return;
     }
 
     // Clear previous data
