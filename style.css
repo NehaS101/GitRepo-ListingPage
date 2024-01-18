@@ -1,0 +1,57 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #5da5d4;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+#repositoriesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.repository {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: calc(50% - 20px); /* Two columns with margin */
+    box-sizing: border-box;
+}
+.repository h3{
+    color: #3498db;
+}
+#pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+#pagination button.active {
+    background-color: #3498db;
+    color: white;
+}
+#pagination button{
+    color: #3498db;
+    background-color: white;
+    border: none;
+}
